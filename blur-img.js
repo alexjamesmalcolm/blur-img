@@ -37,9 +37,9 @@ class MyElement extends LitElement {
   }
   render() {
     const stylingFromParentDom = Object.fromEntries(
-      Object.entries(JSON.parse(JSON.stringify(this.style))).filter(
-        ([key, value]) => !isNumber(Number(key))
-      )
+      Object.entries(
+        JSON.parse(JSON.stringify(window.getComputedStyle(this)))
+      ).filter(([key, value]) => !isNumber(Number(key)))
     );
     const outerStyling = Object.fromEntries(
       Object.entries(stylingFromParentDom).filter(([key, value]) =>
